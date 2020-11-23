@@ -191,6 +191,8 @@ impl Prompt {
     fn get_foreground_string(&mut self, color: String) -> String {
         if self.foreground == color || color == "" {
             String::new()
+        } else if color == "~" {
+            format!("%f")
         } else {
             self.foreground = color;
             format!("%F{{{}}}", self.foreground)
@@ -199,6 +201,8 @@ impl Prompt {
     fn get_background_string(&mut self, color: String) -> String {
         if self.background == color || color == "" {
             String::new()
+        } else if color == "~" {
+            format!("%f")
         } else {
             self.background = color;
             format!("%K{{{}}}", self.background)
