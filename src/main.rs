@@ -291,7 +291,7 @@ fn main() {
     let mut args = std::env::args();
     println!(
         "# Envoking name: {}",
-        args.next().expect("Arguments is empty");
+        args.next().expect("Arguments is empty"),
     );
     Params::from_args(args).write_prompt();
 }
