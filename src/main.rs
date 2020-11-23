@@ -229,12 +229,12 @@ impl Prompt {
     fn write_precmd(&self) {
         println!("precmd() {{");
         println!(
-            "export psvar=({})",
+            "export psvar=({});",
             self.psvars
                 .iter()
                 .enumerate()
                 .map(|(i, s)| {
-                    println!("local a{}={}", i, s);
+                    println!("local a{}={};", i, s);
                     format!("$a{} ", i)
                 })
                 .collect::<String>()
@@ -279,9 +279,9 @@ impl Params {
     fn write_prompt(self) {
         // Write prompt info using println
         let mut prompt = Prompt::default();
-        println!("PROMPT=''");
+        println!("PROMPT='';");
         for part in self.parts {
-            println!("PROMPT+=$'{}'", part.to_prompt_format(&mut prompt));
+            println!("PROMPT+=$'{}';", part.to_prompt_format(&mut prompt));
         }
         prompt.write_precmd();
     }
@@ -289,9 +289,9 @@ impl Params {
 
 fn main() {
     let mut args = std::env::args();
-    println!(
-        "# Envoking name: {}",
-        args.next().expect("Arguments is empty")
-    );
+    //println!(
+        //"# Envoking name: {}",
+        args.next().expect("Arguments is empty");
+    //);
     Params::from_args(args).write_prompt();
 }
