@@ -289,9 +289,9 @@ impl Params {
 
 fn main() {
     let mut args = std::env::args();
-    //println!(
-        //"# Envoking name: {}",
+    println!(
+        "# Envoking name: {}",
         args.next().expect("Arguments is empty");
-    //);
+    );
     Params::from_args(args).write_prompt();
 }
