@@ -193,6 +193,9 @@ impl Prompt {
             String::new()
         } else if color == "~" {
             format!("%f")
+        } else if color.starts_with("$") {
+            self.foreground = color;
+            format!("{}", self.foreground)
         } else {
             self.foreground = color;
             format!("%F{{{}}}", self.foreground)
@@ -202,7 +205,10 @@ impl Prompt {
         if self.background == color || color == "" {
             String::new()
         } else if color == "~" {
-            format!("%f")
+            format!("%k")
+        } else if color.starts_with("$") {
+            self.background = color;
+            format!("{}", self.background)
         } else {
             self.background = color;
             format!("%K{{{}}}", self.background)
@@ -232,6 +238,7 @@ impl Prompt {
     }
     fn write_precmd(&self) {
         println!("precmd() {{");
+        //println!("export bg_array;");
         println!(
             "export psvar=({});",
             self.psvars
@@ -283,6 +290,7 @@ impl Params {
     fn write_prompt(self) {
         // Write prompt info using println
         let mut prompt = Prompt::default();
+        println!("typeset -a bg_array=($bg);");
         println!("PROMPT='';");
         for part in self.parts {
             println!("PROMPT+=$'{}';", part.to_prompt_format(&mut prompt));
@@ -299,3 +307,4 @@ fn main() {
     );
     Params::from_args(args).write_prompt();
 }
+
