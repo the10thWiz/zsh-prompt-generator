@@ -16,6 +16,7 @@ but the output could also just be piped to a file to be used as-is
 
 ## Screenshots
 
+My personal Zsh prompt
 ![My personal Zsh prompt](/screenshots/zsh_prompt.png)
 
 ## Installation
