@@ -43,3 +43,12 @@ Color is passed (unmodified) to `%K{}` and `%F{}`, and the foregound is optional
 - key is one of the following:
   `$`...: a literal shell function or command
   `%`...: a literal prompt expansion
+
+## Contributing
+
+At this point in time, I do not have any real need to add features. If you think
+something is missing, open an issue, or maybe just code it yourself.
+
+If you would like to contribute, feel free to make a pull request. When doing
+so, please use rustfmt to format.
+
