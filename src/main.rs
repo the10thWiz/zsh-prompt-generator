@@ -157,7 +157,12 @@ impl Part {
             };
             (val, cond, false_val)
         } else {
-            (value.to_string(), "".to_string(), "".to_string())
+            (value.to_string()
+                .replace("&gt;", ">")
+                .replace("&p;", "|")
+                .replace("&lt;", "<")
+                .replace("&&;", "&"),
+                "".to_string(), "".to_string())
         }
     }
     fn expand(s: String) -> String {
