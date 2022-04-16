@@ -1,5 +1,3 @@
-#![feature(split_inclusive)]
-
 // Specification:
 // '(color)key>'
 // Color: ([color][;foreground])? the color, for %K and %F
